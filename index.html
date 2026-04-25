@@ -4,8 +4,9 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Moonlight - Juego de Emparejar</title>
+  <link rel="icon" type="image/png" href="recursos/logo_fondo_oscuro.png">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Short+Stack&display=swap">
   <style>
-    @import url('https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;800;900&display=swap');
 
     * {
       margin: 0;
@@ -14,101 +15,69 @@
     }
 
     body {
-      font-family: 'Nunito', sans-serif;
-      background: linear-gradient(135deg, #0d1b2a 0%, #1b2838 40%, #162447 100%);
+      font-family: 'Century Gothic', 'Apple Gothic', sans-serif;
+      background: #00ADD8;
       min-height: 100vh;
       display: flex;
       flex-direction: column;
       align-items: center;
       overflow-x: hidden;
+      position: relative;
     }
 
     body::before {
       content: '';
       position: fixed;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      background-image:
-        radial-gradient(2px 2px at 20px 30px, #fff, transparent),
-        radial-gradient(2px 2px at 40px 70px, rgba(255,255,255,0.8), transparent),
-        radial-gradient(1px 1px at 90px 40px, #fff, transparent),
-        radial-gradient(2px 2px at 160px 120px, rgba(255,255,255,0.6), transparent),
-        radial-gradient(1px 1px at 200px 60px, #fff, transparent),
-        radial-gradient(2px 2px at 300px 80px, rgba(255,255,255,0.7), transparent),
-        radial-gradient(1px 1px at 400px 30px, #fff, transparent),
-        radial-gradient(2px 2px at 500px 100px, rgba(255,255,255,0.5), transparent),
-        radial-gradient(1px 1px at 600px 50px, #fff, transparent),
-        radial-gradient(2px 2px at 120px 200px, rgba(255,255,255,0.6), transparent),
-        radial-gradient(1px 1px at 250px 250px, #fff, transparent),
-        radial-gradient(2px 2px at 350px 180px, rgba(255,255,255,0.8), transparent),
-        radial-gradient(1px 1px at 450px 220px, #fff, transparent),
-        radial-gradient(2px 2px at 550px 170px, rgba(255,255,255,0.5), transparent),
-        radial-gradient(1px 1px at 80px 350px, #fff, transparent),
-        radial-gradient(2px 2px at 180px 400px, rgba(255,255,255,0.7), transparent),
-        radial-gradient(1px 1px at 320px 320px, #fff, transparent),
-        radial-gradient(2px 2px at 480px 380px, rgba(255,255,255,0.6), transparent);
-      background-repeat: repeat;
-      background-size: 600px 450px;
-      animation: twinkle 4s ease-in-out infinite alternate;
+      inset: 0;
+      background: url('recursos/PATRONES.png') repeat;
+      background-size: 700px;
+      opacity: 0.25;
       pointer-events: none;
       z-index: 0;
     }
 
-    @keyframes twinkle {
-      0% { opacity: 0.6; }
-      100% { opacity: 1; }
-    }
-
-    .moon {
-      position: fixed;
-      top: 30px;
-      right: 60px;
-      width: 80px;
-      height: 80px;
-      background: radial-gradient(circle at 35% 35%, #fff9c4, #ffe082, #ffca28);
-      border-radius: 50%;
-      box-shadow: 0 0 40px rgba(255, 202, 40, 0.4), 0 0 80px rgba(255, 202, 40, 0.2);
-      z-index: 1;
-      animation: moonGlow 3s ease-in-out infinite alternate;
-    }
-
-    @keyframes moonGlow {
-      0% { box-shadow: 0 0 40px rgba(255, 202, 40, 0.4), 0 0 80px rgba(255, 202, 40, 0.2); }
-      100% { box-shadow: 0 0 60px rgba(255, 202, 40, 0.6), 0 0 120px rgba(255, 202, 40, 0.3); }
-    }
-
+    /* ===== HEADER ===== */
     header {
       position: relative;
       z-index: 2;
       text-align: center;
-      padding: 30px 20px 10px;
+      padding: 24px 20px 6px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+
+    .header-logo {
+      width: 90px;
+      height: auto;
+      margin-bottom: 4px;
+      filter: drop-shadow(3px 4px 4px rgba(0,0,0,0.25));
+      transition: transform 0.4s ease;
+    }
+
+    .header-logo:hover {
+      transform: scale(1.08) rotate(-3deg);
     }
 
     header h1 {
-      font-size: 2.8rem;
-      font-weight: 900;
-      background: linear-gradient(135deg, #00bcd4, #e91e63, #ffeb3b, #4caf50);
-      background-size: 300% 300%;
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
-      background-clip: text;
-      animation: gradientShift 4s ease infinite;
+      font-family: 'Short Stack', cursive;
+      font-size: 2.4rem;
+      font-weight: normal;
+      color: #00ADD8;
       letter-spacing: 2px;
     }
 
-    @keyframes gradientShift {
-      0% { background-position: 0% 50%; }
-      50% { background-position: 100% 50%; }
-      100% { background-position: 0% 50%; }
+    header h1 span {
+      color: #d62d44;
     }
 
     header p {
-      color: rgba(255, 255, 255, 0.7);
-      font-size: 1.1rem;
-      font-weight: 600;
-      margin-top: 5px;
+      position: relative;
+      z-index: 2;
+      color: #f5b243;
+      font-size: 1rem;
+      font-weight: normal;
+      margin-top: 16px;
     }
 
     /* ===== LEVEL SELECT SCREEN ===== */
@@ -120,8 +89,8 @@
       align-items: center;
       justify-content: center;
       flex: 1;
-      padding: 40px 20px;
-      gap: 30px;
+      padding: 30px 20px;
+      gap: 28px;
     }
 
     .level-select.hidden {
@@ -129,122 +98,110 @@
     }
 
     .level-select h2 {
+      font-family: 'Short Stack', cursive;
       color: #fff;
-      font-size: 1.6rem;
-      font-weight: 800;
+      font-size: 1.8rem;
+      font-weight: normal;
       text-align: center;
+      text-shadow: 2px 3px 4px rgba(0, 0, 0, 0.25);
     }
 
     .level-cards {
       display: flex;
-      gap: 30px;
+      gap: 28px;
       flex-wrap: wrap;
       justify-content: center;
     }
 
     .level-card {
-      background: rgba(255, 255, 255, 0.07);
-      backdrop-filter: blur(12px);
-      border: 2px solid rgba(255, 255, 255, 0.12);
-      border-radius: 24px;
-      padding: 40px 35px;
+      background: #fff;
+      border: 3px solid #e0e0e0;
+      border-radius: 28px;
+      padding: 30px 28px 28px;
       width: 280px;
       text-align: center;
       cursor: pointer;
       transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
       position: relative;
       overflow: hidden;
-    }
-
-    .level-card::before {
-      content: '';
-      position: absolute;
-      inset: 0;
-      border-radius: 24px;
-      opacity: 0;
-      transition: opacity 0.4s ease;
-    }
-
-    .level-card.easy::before {
-      background: linear-gradient(135deg, rgba(76, 175, 80, 0.15), rgba(129, 199, 132, 0.08));
-    }
-
-    .level-card.hard::before {
-      background: linear-gradient(135deg, rgba(233, 30, 99, 0.15), rgba(244, 67, 54, 0.08));
+      box-shadow: 4px 5px 8px rgba(0,0,0,0.2);
     }
 
     .level-card:hover {
-      transform: translateY(-8px) scale(1.03);
-      border-color: rgba(255, 255, 255, 0.3);
-    }
-
-    .level-card:hover::before {
-      opacity: 1;
-    }
-
-    .level-card.easy:hover {
-      box-shadow: 0 12px 40px rgba(76, 175, 80, 0.3);
-    }
-
-    .level-card.hard:hover {
-      box-shadow: 0 12px 40px rgba(233, 30, 99, 0.3);
+      transform: translateY(-8px) scale(1.02);
     }
 
     .level-card:active {
-      transform: translateY(-4px) scale(1.0);
+      transform: translateY(-2px) scale(1.0);
     }
 
-    .level-icon {
-      font-size: 3.5rem;
-      margin-bottom: 16px;
-      display: block;
+    .level-card.easy {
+      border-color: #81c3bc;
+    }
+
+    .level-card.easy:hover {
+      box-shadow: 0 12px 36px rgba(76, 175, 80, 0.25);
+      border-color: #81c3bc;
+    }
+
+    .level-card.hard {
+      border-color: #d62d44;
+    }
+
+    .level-card.hard:hover {
+      box-shadow: 0 12px 36px rgba(233, 30, 99, 0.25);
+      border-color: #d62d44;
+    }
+
+    .level-mascot {
+      width: 100px;
+      height: 100px;
+      object-fit: contain;
+      margin-bottom: 10px;
+      filter: drop-shadow(0 3px 8px rgba(0,0,0,0.12));
+      transition: transform 0.4s ease;
+    }
+
+    .level-card:hover .level-mascot {
+      transform: scale(1.1) rotate(-5deg);
     }
 
     .level-card h3 {
+      font-family: 'Short Stack', cursive;
       font-size: 1.5rem;
-      font-weight: 900;
-      margin-bottom: 8px;
-      position: relative;
+      font-weight: normal;
+      margin-bottom: 6px;
     }
 
-    .level-card.easy h3 {
-      color: #81c784;
-    }
-
-    .level-card.hard h3 {
-      color: #f48fb1;
-    }
+    .level-card.easy h3 { color: #81c3bc; }
+    .level-card.hard h3 { color: #d62d44; }
 
     .level-card p {
-      color: rgba(255, 255, 255, 0.6);
-      font-size: 0.95rem;
-      font-weight: 600;
-      line-height: 1.5;
-      position: relative;
+      color: #78909c;
+      font-size: 0.92rem;
+      font-weight: normal;
+      line-height: 1.45;
     }
 
     .level-badge {
       display: inline-block;
       padding: 6px 18px;
       border-radius: 20px;
-      font-size: 0.8rem;
-      font-weight: 800;
+      font-size: 0.78rem;
+      font-weight: normal;
       text-transform: uppercase;
       letter-spacing: 1.5px;
-      margin-top: 18px;
-      position: relative;
+      margin-top: 14px;
     }
 
     .level-card.easy .level-badge {
-      background: rgba(76, 175, 80, 0.2);
-      color: #81c784;
-      border: 1px solid rgba(76, 175, 80, 0.3);
+      background: #e6f5f3;
+      color: #81c3bc;
     }
 
     .level-card.hard .level-badge {
-      background: rgba(233, 30, 99, 0.2);
-      color: #f48fb1;
-      border: 1px solid rgba(233, 30, 99, 0.3);
+      background: #fbe8eb;
+      color: #d62d44;
     }
 
     /* ===== GAME SCREEN ===== */
@@ -263,142 +220,121 @@
       position: relative;
       z-index: 2;
       display: flex;
-      gap: 20px;
+      gap: 16px;
       align-items: center;
       justify-content: center;
-      padding: 12px 24px;
-      margin: 10px 0 20px;
-      background: rgba(255, 255, 255, 0.08);
-      backdrop-filter: blur(10px);
+      padding: 10px 20px;
+      margin: 6px 0 14px;
+      background: #fff;
       border-radius: 20px;
-      border: 1px solid rgba(255, 255, 255, 0.1);
+      border: 2px solid #e0e0e0;
+      box-shadow: 0 2px 12px rgba(0,0,0,0.06);
       flex-wrap: wrap;
     }
 
     .game-info .stat {
       display: flex;
       align-items: center;
-      gap: 8px;
-      color: #fff;
-      font-weight: 700;
-      font-size: 1.05rem;
+      gap: 6px;
+      color: #37474f;
+      font-weight: normal;
+      font-size: 1rem;
     }
 
     .game-info .stat .label {
-      color: rgba(255, 255, 255, 0.6);
-      font-weight: 600;
+      color: #90a4ae;
+      font-weight: normal;
     }
 
     .game-info .stat .value {
-      color: #ffca28;
-      font-size: 1.2rem;
-      min-width: 26px;
+      color: #00ADD8;
+      font-size: 1.15rem;
+      font-weight: normal;
+      min-width: 24px;
       text-align: center;
     }
 
     .level-indicator {
       display: flex;
       align-items: center;
-      gap: 6px;
-      padding: 5px 14px;
+      gap: 5px;
+      padding: 4px 12px;
       border-radius: 12px;
-      font-weight: 800;
-      font-size: 0.8rem;
+      font-weight: normal;
+      font-size: 0.75rem;
       text-transform: uppercase;
       letter-spacing: 1px;
     }
 
     .level-indicator.easy {
-      background: rgba(76, 175, 80, 0.2);
-      color: #81c784;
-      border: 1px solid rgba(76, 175, 80, 0.3);
+      background: #e6f5f3;
+      color: #81c3bc;
     }
 
     .level-indicator.hard {
-      background: rgba(233, 30, 99, 0.2);
-      color: #f48fb1;
-      border: 1px solid rgba(233, 30, 99, 0.3);
+      background: #fbe8eb;
+      color: #d62d44;
     }
 
     .btn {
       color: white;
       border: none;
-      padding: 10px 22px;
+      padding: 9px 20px;
       border-radius: 12px;
-      font-family: 'Nunito', sans-serif;
-      font-weight: 800;
-      font-size: 0.9rem;
+      font-family: 'Century Gothic', 'Apple Gothic', sans-serif;
+      font-weight: normal;
+      font-size: 0.85rem;
       cursor: pointer;
       transition: all 0.3s ease;
       letter-spacing: 0.5px;
     }
 
-    .btn:hover {
-      transform: scale(1.05);
-    }
-
-    .btn:active {
-      transform: scale(0.97);
-    }
+    .btn:hover { transform: scale(1.05); }
+    .btn:active { transform: scale(0.97); }
 
     .btn-restart {
-      background: linear-gradient(135deg, #e91e63, #c2185b);
+      background: linear-gradient(135deg, #00ADD8, #0093b8);
     }
 
     .btn-restart:hover {
-      box-shadow: 0 4px 20px rgba(233, 30, 99, 0.4);
+      box-shadow: 0 4px 16px rgba(0, 188, 212, 0.35);
     }
 
     .btn-back {
-      background: linear-gradient(135deg, #546e7a, #37474f);
+      background: #f5b243;
     }
 
     .btn-back:hover {
-      box-shadow: 0 4px 20px rgba(84, 110, 122, 0.4);
+      box-shadow: 0 4px 16px rgba(245, 178, 67, 0.4);
     }
 
+    /* ===== BOARD ===== */
     .board {
       position: relative;
       z-index: 2;
       display: grid;
       grid-template-columns: repeat(5, 1fr);
-      gap: 16px;
-      padding: 20px;
-      max-width: 900px;
+      gap: 14px;
+      padding: 16px;
+      max-width: 880px;
       width: 100%;
     }
 
     @media (max-width: 700px) {
       .board {
         grid-template-columns: repeat(2, 1fr);
-        gap: 12px;
-        padding: 12px;
+        gap: 10px;
+        padding: 10px;
       }
 
-      header h1 {
-        font-size: 2rem;
-      }
+      header h1 { font-size: 1.8rem; }
+      .header-logo { width: 90px; }
 
-      .moon {
-        width: 50px;
-        height: 50px;
-        top: 15px;
-        right: 20px;
-      }
+      .level-cards { gap: 16px; }
+      .level-card { width: 260px; padding: 24px 20px; }
+      .level-mascot { width: 80px; height: 80px; }
 
-      .level-cards {
-        gap: 16px;
-      }
-
-      .level-card {
-        width: 260px;
-        padding: 30px 25px;
-      }
-
-      .game-info {
-        gap: 12px;
-        padding: 10px 16px;
-      }
+      .game-info { gap: 10px; padding: 8px 14px; }
     }
 
     @media (min-width: 701px) and (max-width: 950px) {
@@ -435,7 +371,8 @@
       backface-visibility: hidden;
       border-radius: 16px;
       overflow: hidden;
-      box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+      box-shadow: 0 3px 14px rgba(0, 0, 0, 0.12);
+      border: 2px solid #e0e0e0;
     }
 
     .card-back {
@@ -469,6 +406,7 @@
       transform: rotateY(10deg);
     }
 
+    /* ===== MATCHED STATE ===== */
     .card.matched {
       pointer-events: none;
     }
@@ -483,23 +421,28 @@
       100% { transform: rotateY(180deg) scale(1.03); }
     }
 
+    .card.matched .card-front,
+    .card.matched .card-back {
+      border-color: #81c3bc;
+    }
+
     .card.matched::before {
       content: '✓';
       position: absolute;
-      top: 8px;
-      right: 10px;
-      width: 32px;
-      height: 32px;
-      background: #2e7d32;
+      top: 6px;
+      right: 8px;
+      width: 28px;
+      height: 28px;
+      background: #81c3bc;
       color: #fff;
       border-radius: 50%;
       display: flex;
       align-items: center;
       justify-content: center;
-      font-size: 1.1rem;
-      font-weight: 900;
+      font-size: 0.95rem;
+      font-weight: normal;
       z-index: 10;
-      box-shadow: 0 2px 8px rgba(0,0,0,0.3);
+      box-shadow: 0 2px 8px rgba(0,0,0,0.25);
       animation: checkPop 0.4s 0.3s ease both;
     }
 
@@ -514,28 +457,25 @@
       position: absolute;
       inset: -4px;
       border-radius: 20px;
-      border: 4px solid #4caf50;
+      border: 3px solid #81c3bc;
       background: transparent;
       z-index: -1;
       box-shadow:
-        0 0 12px rgba(76, 175, 80, 0.6),
-        0 0 30px rgba(76, 175, 80, 0.3),
-        inset 0 0 12px rgba(76, 175, 80, 0.15);
-      animation: glowPulse 2s ease-in-out infinite;
+        0 0 10px rgba(76, 175, 80, 0.5),
+        0 0 25px rgba(76, 175, 80, 0.2);
+      animation: glowPulse 2.5s ease-in-out infinite;
     }
 
     @keyframes glowPulse {
       0%, 100% {
         box-shadow:
-          0 0 12px rgba(76, 175, 80, 0.6),
-          0 0 30px rgba(76, 175, 80, 0.3),
-          inset 0 0 12px rgba(76, 175, 80, 0.15);
+          0 0 10px rgba(76, 175, 80, 0.5),
+          0 0 25px rgba(76, 175, 80, 0.2);
       }
       50% {
         box-shadow:
-          0 0 20px rgba(76, 175, 80, 0.9),
-          0 0 50px rgba(76, 175, 80, 0.45),
-          inset 0 0 20px rgba(76, 175, 80, 0.25);
+          0 0 18px rgba(76, 175, 80, 0.7),
+          0 0 40px rgba(76, 175, 80, 0.3);
       }
     }
 
@@ -546,8 +486,14 @@
     }
 
     .board.has-matches .card:not(.matched):hover {
-      opacity: 0.85;
+      opacity: 1;
       filter: none;
+    }
+
+    /* ===== WRONG / SHAKE ===== */
+    .card.wrong .card-front,
+    .card.wrong .card-back {
+      border-color: #d62d44;
     }
 
     .card.wrong .card-inner {
@@ -562,7 +508,7 @@
       80% { transform: rotateY(180deg) translateX(5px); }
     }
 
-    /* Easy mode: cards shown face up, highlight on selection */
+    /* ===== EASY MODE ===== */
     .card.easy-mode {
       cursor: pointer;
     }
@@ -571,8 +517,13 @@
       transform: rotateY(180deg);
     }
 
+    .card.easy-mode.selected .card-front {
+      border-color: #ffb300;
+      border-width: 3px;
+    }
+
     .card.easy-mode.selected {
-      outline: 4px solid #ffca28;
+      outline: 3px solid #ffca28;
       outline-offset: 2px;
       border-radius: 18px;
     }
@@ -610,15 +561,15 @@
     /* Card label */
     .card-label {
       position: absolute;
-      bottom: 8px;
+      bottom: 6px;
       left: 50%;
       transform: translateX(-50%) rotateY(180deg);
-      background: rgba(0, 0, 0, 0.6);
+      background: rgba(0, 0, 0, 0.55);
       color: #fff;
-      padding: 4px 12px;
+      padding: 3px 10px;
       border-radius: 10px;
-      font-size: 0.7rem;
-      font-weight: 700;
+      font-size: 0.65rem;
+      font-weight: normal;
       text-transform: uppercase;
       letter-spacing: 1px;
       backface-visibility: hidden;
@@ -626,13 +577,13 @@
       pointer-events: none;
     }
 
-    /* ===== OVERLAYS ===== */
+    /* ===== WIN OVERLAY ===== */
     .overlay {
       display: none;
       position: fixed;
       inset: 0;
-      background: rgba(0, 0, 0, 0.7);
-      backdrop-filter: blur(8px);
+      background: rgba(0, 0, 0, 0.5);
+      backdrop-filter: blur(6px);
       z-index: 100;
       align-items: center;
       justify-content: center;
@@ -649,14 +600,16 @@
     }
 
     .win-modal {
-      background: linear-gradient(135deg, #1a237e, #283593);
-      border: 2px solid rgba(255, 255, 255, 0.2);
+      background: #fff;
+      border: 3px solid #e0e0e0;
       border-radius: 30px;
-      padding: 50px 40px;
+      padding: 40px 36px;
       text-align: center;
-      max-width: 450px;
+      max-width: 440px;
       width: 90%;
       animation: popIn 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+      box-shadow: 0 20px 60px rgba(0,0,0,0.15);
+      position: relative;
     }
 
     @keyframes popIn {
@@ -664,78 +617,95 @@
       to { transform: scale(1); opacity: 1; }
     }
 
-    .win-modal .trophy {
-      font-size: 4rem;
-      margin-bottom: 15px;
-      animation: bounce 1s ease infinite;
+    .win-logo {
+      width: 80px;
+      margin-bottom: 10px;
+      filter: drop-shadow(0 3px 8px rgba(0,0,0,0.1));
     }
 
     @keyframes bounce {
       0%, 100% { transform: translateY(0); }
-      50% { transform: translateY(-15px); }
+      50% { transform: translateY(-12px); }
     }
 
     .win-modal h2 {
-      color: #ffca28;
-      font-size: 2.2rem;
-      font-weight: 900;
-      margin-bottom: 10px;
+      font-family: 'Short Stack', cursive;
+      color: #00ADD8;
+      font-size: 2rem;
+      font-weight: normal;
+      margin-bottom: 6px;
     }
 
     .win-modal p {
-      color: rgba(255, 255, 255, 0.8);
-      font-size: 1.15rem;
-      font-weight: 600;
-      margin-bottom: 8px;
+      color: #607d8b;
+      font-size: 1.05rem;
+      font-weight: normal;
+      margin-bottom: 6px;
     }
 
     .win-modal .stats {
-      color: #81d4fa;
-      font-size: 1.1rem;
-      font-weight: 700;
-      margin: 20px 0;
+      color: #00ADD8;
+      font-size: 1rem;
+      font-weight: normal;
+      margin: 16px 0;
+      padding: 10px 16px;
+      background: #e0f6fb;
+      border-radius: 14px;
     }
 
-    .win-modal .btn-play {
-      font-size: 1.1rem;
-      padding: 14px 36px;
-      border-radius: 16px;
-      margin-top: 10px;
-      background: linear-gradient(135deg, #00bcd4, #0097a7);
+    .win-mascots {
+      display: flex;
+      justify-content: center;
+      gap: 6px;
+      margin: 14px 0 6px;
     }
 
-    .win-modal .btn-play:hover {
-      box-shadow: 0 4px 25px rgba(0, 188, 212, 0.5);
+    .win-mascots img {
+      width: 110px;
+      height: 110px;
+      object-fit: contain;
+      animation: bounce 1.5s ease infinite;
     }
 
     .win-buttons {
       display: flex;
-      gap: 14px;
+      gap: 12px;
       justify-content: center;
       flex-wrap: wrap;
-      margin-top: 16px;
+      margin-top: 14px;
+    }
+
+    .win-modal .btn-play {
+      font-size: 1rem;
+      padding: 12px 30px;
+      border-radius: 14px;
+      background: linear-gradient(135deg, #00ADD8, #0093b8);
+    }
+
+    .win-modal .btn-play:hover {
+      box-shadow: 0 4px 20px rgba(0, 188, 212, 0.4);
     }
 
     .win-modal .btn-menu {
-      font-size: 1rem;
-      padding: 12px 28px;
-      border-radius: 16px;
-      background: linear-gradient(135deg, #546e7a, #37474f);
+      font-size: 0.95rem;
+      padding: 11px 24px;
+      border-radius: 14px;
+      background: linear-gradient(135deg, #78909c, #546e7a);
     }
 
     .win-modal .btn-menu:hover {
-      box-shadow: 0 4px 20px rgba(84, 110, 122, 0.4);
+      box-shadow: 0 4px 16px rgba(84, 110, 122, 0.35);
     }
 
     .win-modal .btn-next {
-      font-size: 1rem;
-      padding: 12px 28px;
-      border-radius: 16px;
-      background: linear-gradient(135deg, #e91e63, #c2185b);
+      font-size: 0.95rem;
+      padding: 11px 24px;
+      border-radius: 14px;
+      background: linear-gradient(135deg, #d62d44, #d62d44);
     }
 
     .win-modal .btn-next:hover {
-      box-shadow: 0 4px 20px rgba(233, 30, 99, 0.4);
+      box-shadow: 0 4px 16px rgba(233, 30, 99, 0.35);
     }
 
     .win-modal .btn-next.hidden {
@@ -751,15 +721,26 @@
       pointer-events: none;
       z-index: 200;
     }
+
+    /* ===== FOOTER ===== */
+    .footer {
+      position: relative;
+      z-index: 2;
+      padding: 20px;
+      text-align: center;
+      color: #fff;
+      font-size: 0.78rem;
+      font-weight: normal;
+      margin-top: auto;
+    }
   </style>
 </head>
 <body>
 
-  <div class="moon"></div>
 
+  <!-- HEADER -->
   <header>
-    <h1>Moonlight</h1>
-    <p>Empareja cada animal con su seña</p>
+    <img src="recursos/logo_fondo_oscuro.png" alt="Moonlight Logo" class="header-logo">
   </header>
 
   <!-- LEVEL SELECT -->
@@ -767,13 +748,13 @@
     <h2>Elige un nivel</h2>
     <div class="level-cards">
       <div class="level-card easy" onclick="startGame('easy')">
-        <span class="level-icon">🌟</span>
+        <img src="recursos/MASCOTA POSES/POSE 4.png" alt="Mascota" class="level-mascot">
         <h3>Fácil</h3>
         <p>Las tarjetas están descubiertas. Encuentra cada animal con su seña.</p>
         <span class="level-badge">Aprender</span>
       </div>
       <div class="level-card hard" onclick="startGame('hard')">
-        <span class="level-icon">🧠</span>
+        <img src="recursos/MASCOTA POSES/POSE 5.png" alt="Mascota" class="level-mascot">
         <h3>Difícil</h3>
         <p>Las tarjetas están cubiertas. ¡Usa tu memoria para encontrar las parejas!</p>
         <span class="level-badge">Memoria</span>
@@ -810,9 +791,12 @@
   <!-- WIN OVERLAY -->
   <div class="overlay" id="overlay">
     <div class="win-modal">
-      <div class="trophy">🏆</div>
+      <img src="recursos/logo_fondo_claro.png" alt="Moonlight" class="win-logo">
       <h2>¡Felicidades!</h2>
       <p>¡Emparejaste todos los animales con sus señas!</p>
+      <div class="win-mascots">
+        <img src="recursos/MASCOTA POSES/POSE 5.png" alt="Mascota">
+      </div>
       <div class="stats" id="win-stats"></div>
       <div class="win-buttons">
         <button class="btn btn-menu" onclick="goToMenu()">Menú</button>
@@ -823,6 +807,8 @@
   </div>
 
   <canvas id="confetti-canvas"></canvas>
+
+  <div class="footer">Moonlight — Aprende lengua de señas jugando</div>
 
   <script>
     // ===== SOUND ENGINE (Web Audio API) =====
@@ -986,6 +972,7 @@
     function renderBoard() {
       const board = document.getElementById('board');
       board.innerHTML = '';
+      board.classList.remove('has-matches');
 
       cards.forEach((cardData, i) => {
         const card = document.createElement('div');
@@ -1199,7 +1186,7 @@
 
     function launchConfetti() {
       confettiPieces = [];
-      const colors = ['#e91e63', '#00bcd4', '#ffeb3b', '#4caf50', '#ff9800', '#9c27b0', '#2196f3'];
+      const colors = ['#d62d44', '#00ADD8', '#ffeb3b', '#81c3bc', '#ff9800', '#9c27b0', '#2196f3'];
 
       for (let i = 0; i < 150; i++) {
         confettiPieces.push({
