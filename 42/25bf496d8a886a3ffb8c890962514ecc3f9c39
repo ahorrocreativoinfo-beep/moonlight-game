@@ -1,0 +1,23 @@
+index.html
+  6ec334956334b5ef 1-1249
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.3.4",
+  "base_commit_sha": "4225bf496d8a886a3ffb8c890962514ecc3f9c39",
+  "prompts": {
+    "6ec334956334b5ef": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "63d4121e-052c-4381-88e4-5d0095397f4c",
+        "model": "claude-opus-4-6"
+      },
+      "human_author": "saruiz_meli",
+      "messages": [],
+      "total_additions": 1249,
+      "total_deletions": 0,
+      "accepted_lines": 1249,
+      "overriden_lines": 0
+    }
+  }
+}
