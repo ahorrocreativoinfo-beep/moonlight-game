@@ -1,0 +1,586 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Moonlight - Infografía</title>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Short+Stack&display=swap">
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Century Gothic', 'Apple Gothic', sans-serif;
+      background: #eee;
+      display: flex;
+      justify-content: center;
+      padding: 30px;
+    }
+
+    .infografia {
+      width: 900px;
+      background: #00ADD8;
+      position: relative;
+      overflow: hidden;
+      color: #fff;
+    }
+
+    .infografia::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: url('recursos/PATRONES.png') repeat;
+      background-size: 600px;
+      opacity: 0.12;
+      pointer-events: none;
+      z-index: 0;
+    }
+
+    .content {
+      position: relative;
+      z-index: 1;
+    }
+
+    /* ===== HEADER ===== */
+    .header {
+      text-align: center;
+      padding: 50px 40px 30px;
+      position: relative;
+    }
+
+    .header-logo {
+      width: 160px;
+      filter: drop-shadow(3px 4px 6px rgba(0,0,0,0.2));
+      margin-bottom: 14px;
+    }
+
+    .header-subtitle {
+      font-family: 'Short Stack', cursive;
+      font-size: 1.1rem;
+      color: #f5b243;
+      text-shadow: 1px 2px 3px rgba(0,0,0,0.2);
+      margin-top: 6px;
+    }
+
+    .header-line {
+      width: 120px;
+      height: 3px;
+      background: #f5b243;
+      margin: 18px auto 0;
+      border-radius: 3px;
+    }
+
+    /* ===== MASCOTA LATERAL ===== */
+    .mascota-left {
+      position: absolute;
+      left: -10px;
+      top: 180px;
+      width: 130px;
+      filter: drop-shadow(3px 4px 6px rgba(0,0,0,0.2));
+      z-index: 2;
+    }
+
+    .mascota-right {
+      position: absolute;
+      right: -5px;
+      bottom: 220px;
+      width: 120px;
+      filter: drop-shadow(3px 4px 6px rgba(0,0,0,0.2));
+      z-index: 2;
+      transform: scaleX(-1);
+    }
+
+    /* ===== INTRO SECTION ===== */
+    .intro {
+      padding: 30px 60px;
+      text-align: center;
+    }
+
+    .intro-box {
+      background: rgba(255,255,255,0.12);
+      border: 2px solid rgba(255,255,255,0.25);
+      border-radius: 20px;
+      padding: 28px 32px;
+      backdrop-filter: blur(4px);
+    }
+
+    .intro-box p {
+      font-size: 0.92rem;
+      line-height: 1.7;
+      color: rgba(255,255,255,0.95);
+    }
+
+    /* ===== SECTION TITLES ===== */
+    .section-title {
+      font-family: 'Short Stack', cursive;
+      font-size: 1.5rem;
+      text-align: center;
+      padding: 30px 40px 14px;
+      text-shadow: 2px 3px 4px rgba(0,0,0,0.2);
+    }
+
+    .section-title .icon {
+      display: inline-block;
+      width: 44px;
+      height: 44px;
+      border-radius: 50%;
+      line-height: 44px;
+      text-align: center;
+      font-size: 1.3rem;
+      margin-right: 10px;
+      vertical-align: middle;
+      box-shadow: 2px 3px 6px rgba(0,0,0,0.15);
+    }
+
+    /* ===== OBJETIVO GENERAL ===== */
+    .objetivo-general {
+      padding: 10px 60px 30px;
+    }
+
+    .objetivo-box {
+      background: #fff;
+      border-radius: 20px;
+      padding: 28px 30px;
+      color: #333;
+      box-shadow: 4px 5px 12px rgba(0,0,0,0.15);
+      position: relative;
+      border-left: 6px solid #d62d44;
+    }
+
+    .objetivo-box p {
+      font-size: 0.88rem;
+      line-height: 1.7;
+      color: #444;
+    }
+
+    .objetivo-box .highlight {
+      color: #00ADD8;
+      font-weight: bold;
+    }
+
+    /* ===== GRID 3 COLS ===== */
+    .grid-3 {
+      display: grid;
+      grid-template-columns: 1fr 1fr 1fr;
+      gap: 18px;
+      padding: 10px 50px 30px;
+    }
+
+    .grid-card {
+      background: #fff;
+      border-radius: 18px;
+      padding: 24px 20px;
+      text-align: center;
+      color: #333;
+      box-shadow: 4px 5px 10px rgba(0,0,0,0.15);
+      transition: transform 0.3s;
+    }
+
+    .grid-card .card-icon {
+      width: 56px;
+      height: 56px;
+      border-radius: 50%;
+      margin: 0 auto 12px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.5rem;
+    }
+
+    .grid-card h4 {
+      font-family: 'Short Stack', cursive;
+      font-size: 0.95rem;
+      margin-bottom: 8px;
+    }
+
+    .grid-card p {
+      font-size: 0.78rem;
+      line-height: 1.5;
+      color: #666;
+    }
+
+    /* ===== METODOLOGIA ===== */
+    .metodologia {
+      padding: 10px 60px 30px;
+    }
+
+    .metodo-flow {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      flex-wrap: wrap;
+    }
+
+    .metodo-step {
+      background: rgba(255,255,255,0.15);
+      border: 2px solid rgba(255,255,255,0.3);
+      border-radius: 16px;
+      padding: 16px 18px;
+      text-align: center;
+      width: 140px;
+    }
+
+    .metodo-step .step-icon {
+      font-size: 1.6rem;
+      margin-bottom: 6px;
+    }
+
+    .metodo-step h5 {
+      font-family: 'Short Stack', cursive;
+      font-size: 0.82rem;
+      margin-bottom: 3px;
+    }
+
+    .metodo-step p {
+      font-size: 0.68rem;
+      color: rgba(255,255,255,0.8);
+      line-height: 1.4;
+    }
+
+    .metodo-arrow {
+      font-size: 1.4rem;
+      color: #f5b243;
+    }
+
+    /* ===== TECNOLOGIAS + RESULTADO ===== */
+    .duo-section {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 20px;
+      padding: 10px 50px 30px;
+    }
+
+    .duo-card {
+      background: #fff;
+      border-radius: 18px;
+      padding: 24px;
+      color: #333;
+      box-shadow: 4px 5px 10px rgba(0,0,0,0.15);
+    }
+
+    .duo-card h4 {
+      font-family: 'Short Stack', cursive;
+      font-size: 1rem;
+      margin-bottom: 12px;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .duo-card ul {
+      list-style: none;
+      padding: 0;
+    }
+
+    .duo-card ul li {
+      font-size: 0.82rem;
+      line-height: 1.6;
+      color: #555;
+      padding: 4px 0;
+      padding-left: 22px;
+      position: relative;
+    }
+
+    .duo-card ul li::before {
+      content: '';
+      position: absolute;
+      left: 0;
+      top: 10px;
+      width: 10px;
+      height: 10px;
+      border-radius: 50%;
+    }
+
+    .duo-card.tec ul li::before {
+      background: #00ADD8;
+    }
+
+    .duo-card.res ul li::before {
+      background: #81c3bc;
+    }
+
+    /* ===== CANAL ===== */
+    .canal-section {
+      padding: 10px 60px 30px;
+      text-align: center;
+    }
+
+    .canal-box {
+      display: inline-flex;
+      align-items: center;
+      gap: 14px;
+      background: rgba(255,255,255,0.15);
+      border: 2px solid rgba(255,255,255,0.3);
+      border-radius: 16px;
+      padding: 16px 30px;
+    }
+
+    .canal-box span {
+      font-size: 1.8rem;
+    }
+
+    .canal-box p {
+      font-size: 0.9rem;
+      text-align: left;
+    }
+
+    .canal-box strong {
+      color: #f5b243;
+    }
+
+    /* ===== OBJETIVOS ESPECIFICOS ===== */
+    .obj-especificos {
+      padding: 10px 50px 40px;
+    }
+
+    .obj-list {
+      display: flex;
+      flex-direction: column;
+      gap: 14px;
+    }
+
+    .obj-item {
+      display: flex;
+      align-items: flex-start;
+      gap: 16px;
+      background: #fff;
+      border-radius: 16px;
+      padding: 20px 22px;
+      color: #333;
+      box-shadow: 4px 5px 10px rgba(0,0,0,0.15);
+    }
+
+    .obj-number {
+      flex-shrink: 0;
+      width: 44px;
+      height: 44px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-family: 'Short Stack', cursive;
+      font-size: 1.2rem;
+      color: #fff;
+      box-shadow: 2px 3px 6px rgba(0,0,0,0.15);
+    }
+
+    .obj-item-content h5 {
+      font-family: 'Short Stack', cursive;
+      font-size: 0.9rem;
+      margin-bottom: 4px;
+    }
+
+    .obj-item-content p {
+      font-size: 0.8rem;
+      line-height: 1.6;
+      color: #555;
+    }
+
+    .ods-badge {
+      display: inline-block;
+      padding: 2px 10px;
+      border-radius: 10px;
+      font-size: 0.65rem;
+      font-weight: bold;
+      color: #fff;
+      margin-top: 6px;
+    }
+
+    /* ===== FOOTER ===== */
+    .footer {
+      background: rgba(0,0,0,0.15);
+      padding: 24px 50px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .footer-logo {
+      width: 70px;
+      filter: drop-shadow(2px 3px 4px rgba(0,0,0,0.2));
+    }
+
+    .footer-text {
+      text-align: right;
+      font-size: 0.72rem;
+      color: rgba(255,255,255,0.7);
+      line-height: 1.5;
+    }
+
+    .footer-text strong {
+      color: #fff;
+      font-size: 0.8rem;
+    }
+
+    /* ===== DECORATIVE SHAPES ===== */
+    .deco-circle {
+      position: absolute;
+      border-radius: 50%;
+      opacity: 0.08;
+      z-index: 0;
+    }
+  </style>
+</head>
+<body>
+
+<div class="infografia">
+  <!-- Decorative shapes -->
+  <div class="deco-circle" style="width:200px;height:200px;background:#f5b243;top:-60px;right:-40px;"></div>
+  <div class="deco-circle" style="width:150px;height:150px;background:#d62d44;bottom:300px;left:-50px;"></div>
+  <div class="deco-circle" style="width:180px;height:180px;background:#81c3bc;bottom:-60px;right:-60px;"></div>
+
+  <!-- Mascota lateral -->
+  <img src="recursos/MASCOTA_POSES/POSE4.png" alt="Beethoven" class="mascota-left">
+  <img src="recursos/MASCOTA_POSES/POSE5.png" alt="Beethoven" class="mascota-right">
+
+  <div class="content">
+
+    <!-- HEADER -->
+    <div class="header">
+      <img src="recursos/logo_fondo_oscuro.png" alt="Moonlight" class="header-logo">
+      <div class="header-subtitle">Aprendiendo Lengua de Señas a Traves del Juego</div>
+      <div class="header-line"></div>
+    </div>
+
+    <!-- INTRO -->
+    <div class="intro">
+      <div class="intro-box">
+        <p>El proyecto <strong>MOONLIGHT</strong> surge como una respuesta creativa y estrategica a la <strong>segregacion comunicativa</strong> entre la poblacion infantil sorda y oyente en Bogota. A traves de una caja de experiencia inmersiva que integra elementos pop-up y tarjetas de alto contraste, esta iniciativa busca transformar la educacion tradicional en una <strong>experiencia sensorial y ludica</strong>.</p>
+      </div>
+    </div>
+
+    <!-- OBJETIVO GENERAL -->
+    <div class="section-title">
+      <span class="icon" style="background:#d62d44;">&#127919;</span>
+      Objetivo General
+    </div>
+    <div class="objetivo-general">
+      <div class="objetivo-box">
+        <p>Eliminar las <span class="highlight">barreras de comunicacion</span> mediante el aprendizaje de la <strong>Lengua de Senas Colombiana (LSC)</strong>, promoviendo la empatia y la igualdad de condiciones desde la infancia.</p>
+      </div>
+    </div>
+
+    <!-- METODOLOGIA -->
+    <div class="section-title">
+      <span class="icon" style="background:#f5b243;">&#128161;</span>
+      Metodologia Design Thinking
+    </div>
+    <div class="metodologia">
+      <div class="metodo-flow">
+        <div class="metodo-step">
+          <div class="step-icon">&#128149;</div>
+          <h5>Empatizar</h5>
+          <p>Comprender las necesidades de ninos sordos y oyentes</p>
+        </div>
+        <span class="metodo-arrow">&#10132;</span>
+        <div class="metodo-step">
+          <div class="step-icon">&#128270;</div>
+          <h5>Definir</h5>
+          <p>Identificar barreras de comunicacion</p>
+        </div>
+        <span class="metodo-arrow">&#10132;</span>
+        <div class="metodo-step">
+          <div class="step-icon">&#128300;</div>
+          <h5>Idear</h5>
+          <p>Explorar soluciones creativas e inclusivas</p>
+        </div>
+        <span class="metodo-arrow">&#10132;</span>
+        <div class="metodo-step">
+          <div class="step-icon">&#128736;</div>
+          <h5>Prototipar</h5>
+          <p>Crear la caja de experiencia y el juego digital</p>
+        </div>
+        <span class="metodo-arrow">&#10132;</span>
+        <div class="metodo-step">
+          <div class="step-icon">&#9989;</div>
+          <h5>Testear</h5>
+          <p>Validar con usuarios reales en contexto</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- TECNOLOGIAS + RESULTADO -->
+    <div class="section-title">
+      <span class="icon" style="background:#81c3bc;">&#128187;</span>
+      Tecnologias y Resultado
+    </div>
+    <div class="duo-section">
+      <div class="duo-card tec">
+        <h4><span style="font-size:1.2rem;">&#9889;</span> Tecnologias</h4>
+        <ul>
+          <li>Juego online interactivo</li>
+          <li>Banner para pagina web</li>
+          <li>Muppi publicitario</li>
+        </ul>
+      </div>
+      <div class="duo-card res">
+        <h4><span style="font-size:1.2rem;">&#127942;</span> Resultado Esperado</h4>
+        <ul>
+          <li>Que los ninos aprendan LSC a traves del juego de cartas en 2 niveles:</li>
+          <li><strong>Nivel Facil:</strong> Emparejar animal con su sena</li>
+          <li><strong>Nivel Dificil:</strong> Tipo concentrese (memoria)</li>
+        </ul>
+      </div>
+    </div>
+
+    <!-- CANAL -->
+    <div class="canal-section">
+      <div class="canal-box">
+        <span>&#127760;</span>
+        <p>Canal de distribucion:<br><strong>Pagina web del Colegio Isabel II</strong></p>
+      </div>
+    </div>
+
+    <!-- OBJETIVOS ESPECIFICOS -->
+    <div class="section-title">
+      <span class="icon" style="background:#f5b243;">&#127775;</span>
+      Objetivos Especificos
+    </div>
+    <div class="obj-especificos">
+      <div class="obj-list">
+        <div class="obj-item">
+          <div class="obj-number" style="background:#d62d44;">1</div>
+          <div class="obj-item-content">
+            <h5 style="color:#d62d44;">Diseno inclusivo y accesible</h5>
+            <p>Disenar una experiencia visual accesible (pictogramas, alto contraste, lenguaje claro) que permita la inclusion de ninos sordos y oyentes.</p>
+            <span class="ods-badge" style="background:#d62d44;">ODS 10</span>
+          </div>
+        </div>
+        <div class="obj-item">
+          <div class="obj-number" style="background:#81c3bc;">2</div>
+          <div class="obj-item-content">
+            <h5 style="color:#81c3bc;">Migracion digital sostenible</h5>
+            <p>Reducir el uso de materiales impresos mediante la migracion total del contenido a entornos digitales.</p>
+            <span class="ods-badge" style="background:#81c3bc;">ODS 12</span>
+          </div>
+        </div>
+        <div class="obj-item">
+          <div class="obj-number" style="background:#f5b243;">3</div>
+          <div class="obj-item-content">
+            <h5 style="color:#f5b243;">Comunicacion y alcance</h5>
+            <p>Implementar estrategias de comunicacion en redes sociales para ampliar el alcance educativo del proyecto.</p>
+            <span class="ods-badge" style="background:#f5b243;">ODS 4</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- FOOTER -->
+    <div class="footer">
+      <img src="recursos/logo_fondo_oscuro.png" alt="Moonlight" class="footer-logo">
+      <div class="footer-text">
+        <strong>Moonlight</strong><br>
+        Aprendiendo Lengua de Senas Colombiana<br>
+        Bogota, Colombia
+      </div>
+    </div>
+
+  </div>
+</div>
+
+</body>
+</html>
