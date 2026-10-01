@@ -735,7 +735,185 @@
     }
 
     /* ===== PRELOADER ===== */
-    
+    /* ===== PRELOADER CONTAINER ===== */
+    #preloader {
+      position: relative;
+      width: 320px;
+      height: 320px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    /* Fondo de resplandor para ambiente marino */
+    .glow-bg {
+      position: absolute;
+      width: 220px;
+      height: 220px;
+      background: radial-gradient(circle, rgba(221, 63, 113, 0.35) 0%, rgba(250, 205, 52, 0.15) 50%, transparent 70%);
+      border-radius: 50%;
+      animation: pulseGlow 4s ease-in-out infinite alternate;
+      z-index: 0;
+    }
+
+    /* SVG del Pulpo */
+    #octopus-svg {
+      position: relative;
+      z-index: 2;
+      width: 100%;
+      height: 100%;
+      filter: drop-shadow(0px 8px 16px rgba(0, 0, 0, 0.3));
+    }
+
+    /* ANIMACIONES DE TENTÁCULOS Y CUERPO */
+    .cuerpo {
+      animation: floatBody 3s ease-in-out infinite alternate;
+      transform-origin: center bottom;
+    }
+
+    .ojo {
+      animation: blinkEye 4s infinite;
+      transform-origin: center;
+    }
+
+    /* Tentáculos izquierdos */
+    .tentaculo-1 {
+      animation: waveTentacle1 2.5s ease-in-out infinite alternate;
+      transform-origin: 30% 70%;
+    }
+
+    .tentaculo-2 {
+      animation: waveTentacle2 3.2s ease-in-out infinite alternate 0.3s;
+      transform-origin: 38% 72%;
+    }
+
+    .tentaculo-3 {
+      animation: waveTentacle3 2.8s ease-in-out infinite alternate 0.6s;
+      transform-origin: 45% 75%;
+    }
+
+    /* Tentáculos derechos */
+    .tentaculo-4 {
+      animation: waveTentacle4 3s ease-in-out infinite alternate 0.2s;
+      transform-origin: 55% 75%;
+    }
+
+    .tentaculo-5 {
+      animation: waveTentacle5 2.6s ease-in-out infinite alternate 0.5s;
+      transform-origin: 62% 72%;
+    }
+
+    .tentaculo-6 {
+      animation: waveTentacle6 3.4s ease-in-out infinite alternate 0.8s;
+      transform-origin: 70% 70%;
+    }
+
+    /* KEYFRAMES DE TENTÁCULOS Y CUERPO */
+    @keyframes floatBody {
+      0% {
+        transform: translateY(0px) rotate(0deg);
+      }
+      100% {
+        transform: translateY(-12px) rotate(2deg);
+      }
+    }
+
+    @keyframes blinkEye {
+      0%, 90%, 100% { transform: scaleY(1); }
+      95% { transform: scaleY(0.1); }
+    }
+
+    @keyframes pulseGlow {
+      0% { transform: scale(0.9); opacity: 0.6; }
+      100% { transform: scale(1.25); opacity: 0.9; }
+    }
+
+    @keyframes waveTentacle1 {
+      0% { transform: rotate(0deg) skewX(0deg); }
+      100% { transform: rotate(-12deg) skewX(-6deg); }
+    }
+
+    @keyframes waveTentacle2 {
+      0% { transform: rotate(0deg) skewY(0deg); }
+      100% { transform: rotate(-8deg) skewY(5deg); }
+    }
+
+    @keyframes waveTentacle3 {
+      0% { transform: rotate(0deg); }
+      100% { transform: rotate(-15deg); }
+    }
+
+    @keyframes waveTentacle4 {
+      0% { transform: rotate(0deg); }
+      100% { transform: rotate(15deg); }
+    }
+
+    @keyframes waveTentacle5 {
+      0% { transform: rotate(0deg) skewY(0deg); }
+      100% { transform: rotate(8deg) skewY(-5deg); }
+    }
+
+    @keyframes waveTentacle6 {
+      0% { transform: rotate(0deg) skewX(0deg); }
+      100% { transform: rotate(12deg) skewX(6deg); }
+    }
+
+    /* SISTEMA DE BURBUJAS HTML/CSS */
+    .bubbles-container {
+      position: absolute;
+      inset: 0;
+      pointer-events: none;
+      z-index: 3;
+      overflow: hidden;
+    }
+
+    .bubble {
+      position: absolute;
+      bottom: 20%;
+      background: radial-gradient(circle at 30% 30%, rgba(255, 255, 255, 0.9), rgba(255, 255, 255, 0.3));
+      border: 1px solid rgba(255, 255, 255, 0.6);
+      border-radius: 50%;
+      box-shadow: 0 0 6px rgba(255, 255, 255, 0.5);
+      animation: riseAndWobble linear infinite;
+    }
+
+    @keyframes riseAndWobble {
+      0% {
+        transform: translateY(0) translateX(0) scale(0.3);
+        opacity: 0;
+      }
+      20% {
+        opacity: 0.8;
+      }
+      50% {
+        transform: translateY(-80px) translateX(12px) scale(0.8);
+      }
+      80% {
+        opacity: 0.8;
+      }
+      100% {
+        transform: translateY(-180px) translateX(-12px) scale(1.1);
+        opacity: 0;
+      }
+    }
+
+    /* TEXTO CARGANDO CON ESTILO BEETHOVEEN */
+    .loading-text {
+      position: relative;
+      z-index: 2;
+      margin-top: 15px;
+      color: #facd34;
+      font-size: 1.1rem;
+      letter-spacing: 3px;
+      text-transform: uppercase;
+      font-weight: bold;
+      animation: textPulse 1.5s ease-in-out infinite alternate;
+    }
+
+    @keyframes textPulse {
+      0% { opacity: 0.5; }
+      100% { opacity: 1; }
+    }    
   </style>
 </head>
 <body>
@@ -847,8 +1025,7 @@
     </svg>
   </div>
 
-  <!-- <div class="loading-text">Cargando...</div> -->
-
+  <div class="loading-text">Cargando...</div>
 
   <!-- HEADER -->
   <header>
@@ -924,6 +1101,42 @@
 
   <script>
     // ===== PRELOADER ANIMATION =====
+    // Generador de burbujas dinámicas en JavaScript
+    const container = document.getElementById('bubblesContainer');
+
+    function createBubble() {
+      const bubble = document.createElement('div');
+      bubble.classList.add('bubble');
+
+      // Tamaño aleatorio de burbuja (entre 8px y 22px)
+      const size = Math.random() * 14 + 8;
+      bubble.style.width = `${size}px`;
+      bubble.style.height = `${size}px`;
+
+      // Posición horizontal (centrada alrededor del pulpo)
+      const posX = Math.random() * 160 + 80;
+      bubble.style.left = `${posX}px`;
+
+      // Duración de la animación (entre 2s y 4.5s)
+      const duration = Math.random() * 2.5 + 2;
+      bubble.style.animationDuration = `${duration}s`;
+
+      // Retraso aleatorio
+      bubble.style.animationDelay = `${Math.random() * 0.5}s`;
+
+      container.appendChild(bubble);
+
+      // Eliminar burbuja después de que finalice la animación
+      setTimeout(() => {
+        bubble.remove();
+      }, duration * 1000);
+    }
+
+    // Generar burbujas a intervalo continuo
+    setInterval(createBubble, 350);
+  </script>
+
+  <script>
     /*
     (function() {
       const preloader = document.getElementById('preloader');
