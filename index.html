@@ -4,7 +4,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Beethoveen - Juego de Emparejar</title>
-  <link rel="icon" type="image/png" href="recursos/logo_fondo_oscuro.png">
+  <link rel="icon" type="image/png" href="recursos2/LOGO_BLANCO.png">
   <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Short+Stack&display=swap">
   <style>
 
@@ -29,7 +29,7 @@
       content: '';
       position: fixed;
       inset: 0;
-      background: url('recursos/PATRONES.png') repeat;
+      background: url('recursos2/PATRONES_BLANCOS.png') repeat;
       background-size: 700px;
       opacity: 0.25;
       pointer-events: none;
@@ -820,7 +820,7 @@
 
   <!-- HEADER -->
   <header>
-    <img src="recursos/logo_fondo_oscuro.png" alt="Moonlight Logo" class="header-logo">
+    <img src="recursos2/LOGO_BLANCO.png" alt="Beethoven Logo" class="header-logo">
   </header>
 
   <!-- LEVEL SELECT -->
@@ -828,13 +828,13 @@
     <h2>Elige un nivel</h2>
     <div class="level-cards">
       <div class="level-card easy" onclick="startGame('easy')">
-        <img src="recursos/MASCOTA_POSES/POSE4.png" alt="Mascota" class="level-mascot">
+        <img src="recursos2/MASCOTA_POSES/POSE4.png" alt="Mascota" class="level-mascot">
         <h3>Fácil</h3>
         <p>Las tarjetas están descubiertas. Encuentra cada animal con su seña.</p>
         <span class="level-badge">Aprender</span>
       </div>
       <div class="level-card hard" onclick="startGame('hard')">
-        <img src="recursos/MASCOTA_POSES/POSE5.png" alt="Mascota" class="level-mascot">
+        <img src="recursos2/MASCOTA_POSES/POSE5.png" alt="Mascota" class="level-mascot">
         <h3>Difícil</h3>
         <p>Las tarjetas están cubiertas. ¡Usa tu memoria para encontrar las parejas!</p>
         <span class="level-badge">Memoria</span>
@@ -871,11 +871,11 @@
   <!-- WIN OVERLAY -->
   <div class="overlay" id="overlay">
     <div class="win-modal">
-      <img src="recursos/logo_fondo_claro.png" alt="Moonlight" class="win-logo">
+      <img src="recursos2/LOGO_COLOR.png" alt="Beethoven" class="win-logo">
       <h2>¡Felicidades!</h2>
       <p>¡Emparejaste todos los animales con sus señas!</p>
       <div class="win-mascots">
-        <img src="recursos/MASCOTA_POSES/POSE5.png" alt="Mascota">
+        <img src="recursos2/MASCOTA_POSES/POSE5.png" alt="Mascota">
       </div>
       <div class="stats" id="win-stats"></div>
       <div class="win-buttons">
@@ -888,7 +888,7 @@
 
   <canvas id="confetti-canvas"></canvas>
 
-  <div class="footer">Moonlight — Aprende lengua de señas jugando</div>
+  <div class="footer">Beethoven — Aprende lengua de señas jugando</div>
 
   <script>
     // ===== PRELOADER ANIMATION =====
@@ -1061,18 +1061,18 @@
       CARD_DATA.push({
         id: animal,
         type: 'animal',
-        image: `recursos/ANIMALES_ILUSTRADOS/Recurso ${animal}.png`,
+        image: `recursos2/ANIMALES_ILUSTRADOS/${animal}.webp`,
         label: animal
       });
       CARD_DATA.push({
         id: animal,
         type: 'signo',
-        image: `recursos/SIGNACION/Recurso_SIGNACION_${animal}.png`,
+        image: `recursos2/SIGNACION/${animal}.webp`,
         label: `Seña ${animal}`
       });
     });
 
-    const BACK_IMAGE = 'recursos/PARTE_DE_ATRAS_TARJETAS/RETIRO_CARTA.png';
+    const BACK_IMAGE = 'recursos2/RETIRO_CARTA.webp';
 
     let currentLevel = null;
     let cards = [];
@@ -1177,7 +1177,7 @@
         card.innerHTML = `
           <div class="card-inner">
             <div class="card-back">
-              <img src="${BACK_IMAGE}" alt="Moonlight" draggable="false">
+              <img src="${BACK_IMAGE}" alt="Beethoven" draggable="false">
             </div>
             <div class="card-front">
               <img src="${cardData.image}" alt="${cardData.label}" draggable="false">
